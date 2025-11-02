@@ -5,7 +5,7 @@ module pipe_pulse_generator #(
     input  wire s,          // signal d’entrée (le signal à surveiller)
     input  wire pipe_in,    // entrée du pipeline
     output wire pipe_out,   // sortie du pipeline
-    input  wire rst         // reset asynchrone
+    input  wire reset         // reset asynchrone
 );
 
     reg [WIDTH-1:0] shift_reg = {WIDTH{1'b0}};
@@ -15,8 +15,8 @@ module pipe_pulse_generator #(
     wire s_rising = s & ~s_prev;
     wire trigger = s_rising | pipe_in;
 
-    always @(posedge clk or posedge rst) begin
-        if (rst) begin
+    always @(posedge clk) begin
+        if (reset) begin
             shift_reg <= {WIDTH{1'b0}};
             pulse <= 1'b0;
             s_prev <= 1'b0;
