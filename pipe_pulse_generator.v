@@ -25,12 +25,12 @@ module pipe_pulse_generator #(
 
             if (trigger) begin
                 if (WIDTH > 1)
-                    shift_reg <= {shift_reg[WIDTH-2:0], 1'b1};
+                    shift_reg <= {shift_reg[WIDTH-1:0], 1'b1};
                 else
                     shift_reg <= 1'b1;
             end else begin
                 if (WIDTH > 1)
-                    shift_reg <= {shift_reg[WIDTH-2:0], 1'b0};
+                    shift_reg <= {shift_reg[WIDTH-1:0], 1'b0};
                 else
                     shift_reg <= 1'b0;
             end
