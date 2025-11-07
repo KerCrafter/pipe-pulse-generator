@@ -1,3 +1,5 @@
+`default_nettype none
+
 module pipe_pulse_generator (
     input  wire clk,
     input  wire s,          // signal d’entrée (le signal à surveiller)
